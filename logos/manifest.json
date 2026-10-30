@@ -1,0 +1,363 @@
+{
+ "AGI": {
+  "monogram": {
+   "file": "logos/agi-monogram.webp",
+   "sm": "logos/agi-monogram-sm.webp",
+   "w": 753,
+   "h": 679,
+   "colors": [
+    "#c00018",
+    "#001848",
+    "#a80018"
+   ]
+  },
+  "mascot": {
+   "file": "logos/agi-mascot.webp",
+   "sm": "logos/agi-mascot-sm.webp",
+   "w": 1004,
+   "h": 723
+  },
+  "wordmark": {
+   "file": "logos/agi-wordmark.webp",
+   "sm": "logos/agi-wordmark-sm.webp",
+   "w": 924,
+   "h": 321
+  },
+  "historical": {
+   "file": "logos/agi-historical.webp",
+   "sm": "logos/agi-historical-sm.webp",
+   "w": 1437,
+   "h": 963
+  },
+  "alt1": {
+   "file": "logos/agi-alt1.webp",
+   "sm": "logos/agi-alt1-sm.webp",
+   "w": 748,
+   "h": 788
+  },
+  "alt2": {
+   "file": "logos/agi-alt2.webp",
+   "sm": "logos/agi-alt2-sm.webp",
+   "w": 929,
+   "h": 838
+  }
+ },
+ "SB": {
+  "monogram": {
+   "file": "logos/sb-monogram.webp",
+   "sm": "logos/sb-monogram-sm.webp",
+   "w": 709,
+   "h": 779,
+   "colors": [
+    "#f0c048",
+    "#d8c048",
+    "#a80048"
+   ]
+  },
+  "mascot": {
+   "file": "logos/sb-mascot.webp",
+   "sm": "logos/sb-mascot-sm.webp",
+   "w": 747,
+   "h": 930
+  },
+  "wordmark": {
+   "file": "logos/sb-wordmark.webp",
+   "sm": "logos/sb-wordmark-sm.webp",
+   "w": 958,
+   "h": 500
+  }
+ },
+ "MH": {
+  "monogram": {
+   "file": "logos/mh-monogram.webp",
+   "sm": "logos/mh-monogram-sm.webp",
+   "w": 942,
+   "h": 896,
+   "colors": [
+    "#004878",
+    "#f0d800",
+    "#f0c018"
+   ]
+  },
+  "mascot": {
+   "file": "logos/mh-mascot.webp",
+   "sm": "logos/mh-mascot-sm.webp",
+   "w": 867,
+   "h": 874
+  },
+  "wordmark": {
+   "file": "logos/mh-wordmark.webp",
+   "sm": "logos/mh-wordmark-sm.webp",
+   "w": 973,
+   "h": 699
+  },
+  "historical": {
+   "file": "logos/mh-historical.webp",
+   "sm": "logos/mh-historical-sm.webp",
+   "w": 799,
+   "h": 1205
+  },
+  "alt1": {
+   "file": "logos/mh-alt1.webp",
+   "sm": "logos/mh-alt1-sm.webp",
+   "w": 1005,
+   "h": 930
+  },
+  "old1": {
+   "file": "logos/mh-old1.webp",
+   "sm": "logos/mh-old1-sm.webp",
+   "w": 949,
+   "h": 1399,
+   "team": "GG"
+  },
+  "old2": {
+   "file": "logos/mh-old2.webp",
+   "sm": "logos/mh-old2-sm.webp",
+   "w": 1370,
+   "h": 468,
+   "team": "GG"
+  },
+  "old3": {
+   "file": "logos/mh-old3.webp",
+   "sm": "logos/mh-old3-sm.webp",
+   "w": 919,
+   "h": 538,
+   "team": "GG"
+  }
+ },
+ "HST": {
+  "monogram": {
+   "file": "logos/hst-monogram.webp",
+   "sm": "logos/hst-monogram-sm.webp",
+   "w": 907,
+   "h": 681,
+   "colors": [
+    "#184818",
+    "#784800",
+    "#004800"
+   ]
+  },
+  "mascot": {
+   "file": "logos/hst-mascot.webp",
+   "sm": "logos/hst-mascot-sm.webp",
+   "w": 871,
+   "h": 1205
+  },
+  "wordmark": {
+   "file": "logos/hst-wordmark.webp",
+   "sm": "logos/hst-wordmark-sm.webp",
+   "w": 1360,
+   "h": 465
+  },
+  "historical": {
+   "file": "logos/hst-historical.webp",
+   "sm": "logos/hst-historical-sm.webp",
+   "w": 1297,
+   "h": 610
+  }
+ },
+ "FB": {
+  "monogram": {
+   "file": "logos/fb-monogram.webp",
+   "sm": "logos/fb-monogram-sm.webp",
+   "w": 951,
+   "h": 608,
+   "colors": [
+    "#d86000",
+    "#d87800",
+    "#003018"
+   ]
+  },
+  "mascot": {
+   "file": "logos/fb-mascot.webp",
+   "sm": "logos/fb-mascot-sm.webp",
+   "w": 987,
+   "h": 794
+  },
+  "wordmark": {
+   "file": "logos/fb-wordmark.webp",
+   "sm": "logos/fb-wordmark-sm.webp",
+   "w": 998,
+   "h": 187
+  },
+  "historical": {
+   "file": "logos/fb-historical.webp",
+   "sm": "logos/fb-historical-sm.webp",
+   "w": 1057,
+   "h": 949
+  },
+  "alt1": {
+   "file": "logos/fb-alt1.webp",
+   "sm": "logos/fb-alt1-sm.webp",
+   "w": 902,
+   "h": 290
+  }
+ },
+ "BH": {
+  "monogram": {
+   "file": "logos/bh-monogram.webp",
+   "sm": "logos/bh-monogram-sm.webp",
+   "w": 908,
+   "h": 656,
+   "colors": [
+    "#003078",
+    "#00a8f0",
+    "#004890"
+   ]
+  },
+  "mascot": {
+   "file": "logos/bh-mascot.webp",
+   "sm": "logos/bh-mascot-sm.webp",
+   "w": 772,
+   "h": 769
+  },
+  "wordmark": {
+   "file": "logos/bh-wordmark.webp",
+   "sm": "logos/bh-wordmark-sm.webp",
+   "w": 943,
+   "h": 603
+  },
+  "historical": {
+   "file": "logos/bh-historical.webp",
+   "sm": "logos/bh-historical-sm.webp",
+   "w": 1211,
+   "h": 853
+  }
+ },
+ "SW": {
+  "monogram": {
+   "file": "logos/sw-monogram.webp",
+   "sm": "logos/sw-monogram-sm.webp",
+   "w": 867,
+   "h": 614,
+   "colors": [
+    "#d8a848",
+    "#781818",
+    "#601818"
+   ]
+  },
+  "mascot": {
+   "file": "logos/sw-mascot.webp",
+   "sm": "logos/sw-mascot-sm.webp",
+   "w": 913,
+   "h": 1313
+  },
+  "wordmark": {
+   "file": "logos/sw-wordmark.webp",
+   "sm": "logos/sw-wordmark-sm.webp",
+   "w": 981,
+   "h": 686
+  },
+  "historical": {
+   "file": "logos/sw-historical.webp",
+   "sm": "logos/sw-historical-sm.webp",
+   "w": 920,
+   "h": 1314
+  },
+  "old1": {
+   "file": "logos/sw-old1.webp",
+   "sm": "logos/sw-old1-sm.webp",
+   "w": 957,
+   "h": 1152,
+   "team": "RN"
+  },
+  "old2": {
+   "file": "logos/sw-old2.webp",
+   "sm": "logos/sw-old2-sm.webp",
+   "w": 1219,
+   "h": 749,
+   "team": "RN"
+  },
+  "old3": {
+   "file": "logos/sw-old3.webp",
+   "sm": "logos/sw-old3-sm.webp",
+   "w": 830,
+   "h": 813,
+   "team": "RN"
+  }
+ },
+ "ED": {
+  "monogram": {
+   "file": "logos/ed-monogram.webp",
+   "sm": "logos/ed-monogram-sm.webp",
+   "w": 783,
+   "h": 536,
+   "colors": [
+    "#f0c048",
+    "#483018",
+    "#d8a848"
+   ]
+  },
+  "mascot": {
+   "file": "logos/ed-mascot.webp",
+   "sm": "logos/ed-mascot-sm.webp",
+   "w": 954,
+   "h": 904
+  },
+  "wordmark": {
+   "file": "logos/ed-wordmark.webp",
+   "sm": "logos/ed-wordmark-sm.webp",
+   "w": 818,
+   "h": 542
+  },
+  "historical": {
+   "file": "logos/ed-historical.webp",
+   "sm": "logos/ed-historical-sm.webp",
+   "w": 1018,
+   "h": 921
+  }
+ },
+ "WF": {
+  "monogram": {
+   "file": "logos/wf-monogram.webp",
+   "sm": "logos/wf-monogram-sm.webp",
+   "w": 934,
+   "h": 553,
+   "colors": [
+    "#483000",
+    "#f0f078",
+    "#f0f060"
+   ]
+  },
+  "mascot": {
+   "file": "logos/wf-mascot.webp",
+   "sm": "logos/wf-mascot-sm.webp",
+   "w": 1025,
+   "h": 981
+  },
+  "wordmark": {
+   "file": "logos/wf-wordmark.webp",
+   "sm": "logos/wf-wordmark-sm.webp",
+   "w": 1276,
+   "h": 472
+  },
+  "old1": {
+   "file": "logos/wf-old1.webp",
+   "sm": "logos/wf-old1-sm.webp",
+   "w": 989,
+   "h": 1186,
+   "team": "MMG"
+  },
+  "old2": {
+   "file": "logos/wf-old2.webp",
+   "sm": "logos/wf-old2-sm.webp",
+   "w": 1029,
+   "h": 513,
+   "team": "MMG"
+  },
+  "old3": {
+   "file": "logos/wf-old3.webp",
+   "sm": "logos/wf-old3-sm.webp",
+   "w": 885,
+   "h": 540,
+   "team": "MMG"
+  },
+  "old4": {
+   "file": "logos/wf-old4.webp",
+   "sm": "logos/wf-old4-sm.webp",
+   "w": 761,
+   "h": 510,
+   "team": "MMG"
+  }
+ }
+}
