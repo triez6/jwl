@@ -178,6 +178,7 @@ select{font:inherit;padding:6px 8px;border:1px solid var(--rule);border-radius:v
 footer{border-top:1px solid var(--rule);color:var(--muted);font-size:12px}
 footer .wrap{padding-block:18px}
 .loading{padding:60px 0;text-align:center;color:var(--muted)}
+.tag{display:inline-block;vertical-align:middle;font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--gold-bg);color:var(--gold);border:1px solid currentColor;line-height:1.4}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
@@ -263,11 +264,13 @@ const PSTATS=[{k:"W",l:"Wins"},{k:"K",l:"Strikeouts"},{k:"ERA",l:"Earned Run Ave
   {k:"SO9",l:"Strikeouts per 9",rate:1,f:f2},{k:"GS",l:"Games Started"},{k:"WLP",l:"Win-Loss %",rate:1,f:pct,minW:5}];
 const CAREER_PA=500, CAREER_OUTS=450;
 /* Every JWL season is a 42-game schedule. A team-season whose stats cover well under 42 games
-   (innings pitched ÷ 9 below PARTIAL_BELOW) is flagged partial, and its rate-stat qualifier uses the games recorded. */
-const SEASON_G=42, PARTIAL_BELOW=38;
+   (innings pitched ÷ 9 below PARTIAL_BELOW) is a season still in progress: it shows games played so far,
+   and its players' rate-stat qualifiers use those games. */
+const SEASON_G=42, PARTIAL_BELOW=38, IN_PROG=new Set();
+const tag=`<span class="tag">In progress</span>`;
 const qualB=(s,y,qg)=>y?s.PA>=3.1*(qg??SG[y]):s.PA>=CAREER_PA;
 const qualP=(s,y,qg)=>y?s.OUTS>=3*(qg??SG[y]):s.OUTS>=CAREER_OUTS;
-const gCell=r=>r.partial?`${SEASON_G}<sup title="Stats recorded for about ${r.rec} of ${SEASON_G} games">†</sup>`:SEASON_G;
+const gCell=r=>r.partial?`<span title="Season in progress: ${r.rec} of ${SEASON_G} games played">${r.rec} <span class="muted">of ${SEASON_G}</span></span>`:SEASON_G;
 
 /* ---------- load & index ---------- */
 async function load(){
@@ -279,7 +282,7 @@ async function load(){
   for(const r of BAT){PL[r.p].bat.push(r);ys.add(r.y);(TS[r.t+"-"+r.y]??={t:r.t,y:r.y,bat:[],pit:[]}).bat.push(r)}
   for(const r of PIT){PL[r.p].pit.push(r);ys.add(r.y);(TS[r.t+"-"+r.y]??={t:r.t,y:r.y,bat:[],pit:[]}).pit.push(r);outs[r.t+"-"+r.y]=(outs[r.t+"-"+r.y]||0)+r.OUTS}
   YEARS=[...ys].sort((a,b)=>a-b);
-  for(const k in TS){const rec=(outs[k]||0)/27,t=TS[k];t.games=SEASON_G;t.rec=Math.round(rec);t.partial=rec<PARTIAL_BELOW;t.qg=t.partial?t.rec:SEASON_G}
+  for(const k in TS){const rec=(outs[k]||0)/27,t=TS[k];t.games=SEASON_G;t.rec=Math.round(rec);t.partial=rec<PARTIAL_BELOW;t.qg=t.partial?t.rec:SEASON_G;if(t.partial)IN_PROG.add(t.y)}
   for(const y of YEARS){SG[y]=SEASON_G}
   const group=(rows,map,sum)=>{const g=new Map();for(const r of rows){const k=r.p+"|"+r.y;(g.get(k)||g.set(k,[]).get(k)).push(r)}
     for(const [k,rs] of g){map.set(k,{p:rs[0].p,y:rs[0].y,teams:rs.map(r=>r.t),rows:rs,s:sum(rs),qg:Math.max(...rs.map(r=>TS[r.t+"-"+r.y].qg))})}};
@@ -355,7 +358,9 @@ function pitCols(ledFn,first){return [first,
 const noLed=()=>null;
 
 /* ---------- headshot (silhouette placeholder; not a likeness) ---------- */
+const PHOTOS={"ichiro-suzuki":"Ichiro.png"};
 function headshot(pid,code){
+  if(PHOTOS[pid]) return `<img src="${PHOTOS[pid]}" alt="Photo of ${esc(pname?pname(pid):pid)}" style="width:100%;height:100%;object-fit:cover;display:block">`;
   const h=hash(pid), m=FR_META[frOf(code)]||{c1:"#555",c2:"#aaa"}, lg=logoUrl(code);
   const w=34+(h%5), ear=(h>>4)%3, beard=(h>>7)%5===0, stub=(h>>9)%4===0, neck=16+((h>>11)%3)*2;
   return `<svg viewBox="0 0 120 140" role="img" aria-label="Player silhouette in ${esc(tname(code))} cap">
@@ -397,7 +402,7 @@ function home(){
     <section style="margin:0"><h2>JWL single-season records</h2><dl class="rec">${rec("b",BSTATS[0])}${rec("b",BSTATS[1])}${rec("b",BSTATS[2])}${rec("b",BSTATS[4])}${rec("b",BSTATS[8])}${rec("p",PSTATS[0])}${rec("p",PSTATS[1])}${rec("p",PSTATS[2])}${rec("p",PSTATS[3])}</dl></section>
     <section style="margin:0"><h2>Career leaders</h2><div class="grid" style="gap:12px">${boardHTML("b",BSTATS[0],"career",5)}${boardHTML("p",PSTATS[1],"career",5)}</div></section>
   </div>
-  <section><h2>${last} leaders</h2><div class="grid g4">${boardHTML("b",BSTATS[0],last,5)}${boardHTML("b",BSTATS[4],last,5)}${boardHTML("p",PSTATS[0],last,5)}${boardHTML("p",PSTATS[2],last,5)}</div>
+  <section><h2>${last} leaders${IN_PROG.has(last)?" "+tag:""}</h2><div class="grid g4">${boardHTML("b",BSTATS[0],last,5)}${boardHTML("b",BSTATS[4],last,5)}${boardHTML("p",PSTATS[0],last,5)}${boardHTML("p",PSTATS[2],last,5)}</div>
   <p class="note"><a href="#leaders">All leaderboards →</a></p></section>`;
 }
 const curName=f=>[...f.names].sort((a,b)=>Math.max(...b.years,0)-Math.max(...a.years,0))[0].name;
@@ -481,7 +486,7 @@ function franchisePage(fid){
     const hrTop=[...new Map(t.bat.map(r=>[r.p,r])).values()].sort((a,b)=>b.HR-a.HR)[0], wTop=[...t.pit].sort((a,b)=>b.W-a.W||a.ER-b.ER)[0];
     return {y:t.y,t:t.t,T,games:t.games,partial:t.partial,rec:t.rec,hr:hrTop,w:wTop}});
   const ybyCols=[c("Year",r=>`<a href="#ts-${r.t.toLowerCase()}-${r.y}">${r.y}</a>`,{a:"l",v:r=>r.y}),c("Team",r=>`${timg(r.t)}${esc(tname(r.t))}`,{a:"l",v:r=>tname(r.t)}),
-    c("G",r=>gCell(r),{v:r=>r.partial?r.rec:SEASON_G,t:"Team games (42-game seasons)"}),c("R",r=>r.T.b.R,{v:r=>r.T.b.R}),c("HR",r=>r.T.b.HR,{v:r=>r.T.b.HR}),c("BA",r=>avg(r.T.b.BA),{v:r=>r.T.b.BA}),
+    c("G",r=>gCell(r),{v:r=>r.partial?r.rec:SEASON_G,t:"Team games (42-game seasons; in-progress seasons show games played)"}),c("R",r=>r.T.b.R,{v:r=>r.T.b.R}),c("HR",r=>r.T.b.HR,{v:r=>r.T.b.HR}),c("BA",r=>avg(r.T.b.BA),{v:r=>r.T.b.BA}),
     c("OPS",r=>avg(r.T.b.OPS),{v:r=>r.T.b.OPS}),c("ERA",r=>f2(r.T.p.ERA),{v:r=>r.T.p.ERA}),c("SO",r=>r.T.p.K,{v:r=>r.T.p.K,t:"Pitching strikeouts"}),
     c("Top HR hitter",r=>r.hr?`${plink(r.hr.p)} (${r.hr.HR})`:"—",{a:"l",v:false}),c("Top winner",r=>r.w?`${plink(r.w.p)} (${r.w.W}-${r.w.L})`:"—",{a:"l",v:false})];
   const inF=r=>codes.includes(r.t);
@@ -498,7 +503,7 @@ function franchisePage(fid){
   <div class="band"><div class="art"><img src="${lg.mascot?.file||""}" alt=""></div>
    <div class="txt"><span class="eyebrow">JWL franchise · ${f.names.flatMap(n=>n.years).length} seasons</span><h1>${esc(name)}</h1>
    <p>${hist}</p>${lg.wordmark?`<div style="background:rgba(255,255,255,.92);border-radius:4px;padding:6px 10px;max-width:280px"><img src="${lg.wordmark.sm}" alt="${esc(name)} wordmark" style="max-height:44px;display:block;margin:auto"></div>`:""}</div></div>
-  <section><h2>Year-by-year</h2>${table(ybyCols,yby)}<p class="note">Every JWL season is 42 games.${yby.some(r=>r.partial)?" † = the stat sheets cover only part of that season (hover for how many games).":""}</p></section>
+  <section><h2>Year-by-year</h2>${table(ybyCols,yby)}<p class="note">Every JWL season is 42 games.${yby.some(r=>r.partial)?" Seasons still in progress show games played so far.":""}</p></section>
   <section><h2>Franchise leaders</h2><div class="grid g4">${boards}</div></section>
   <section><h2>Logos &amp; marks</h2><div class="logos">${logoFigs}</div></section>
   <section><h2>All-time roster · batting</h2>${table([who,yrs,c("PA",r=>r.s.PA,{v:r=>r.s.PA}),c("H",r=>r.s.H,{v:r=>r.s.H}),c("HR",r=>r.s.HR,{v:r=>r.s.HR}),c("RBI",r=>r.s.RBI,{v:r=>r.s.RBI}),c("SB",r=>r.s.SB,{v:r=>r.s.SB}),c("BA",r=>avg(r.s.BA),{v:r=>r.s.BA??-1}),c("OPS",r=>avg(r.s.OPS),{v:r=>r.s.OPS??-1})],rbRows)}</section>
@@ -517,7 +522,7 @@ function teamSeason(code,y){
   app.innerHTML=`
   <div class="band"><div class="art"><img src="${logoUrl(code,"monogram",true)}" alt=""></div>
    <div class="txt"><span class="eyebrow"><a href="#s-${y}">${y} JWL season</a></span><h1>${y} ${esc(tname(code))}</h1>
-   <p>Franchise: <a href="#t-${fid.toLowerCase()}">${esc(curName(f))}</a> · ${ts.games} games${ts.partial?` (stats recorded for about ${ts.rec})`:""} ·${ts.bat.length} batters, ${ts.pit.length} pitchers</p></div></div>
+   <p>Franchise: <a href="#t-${fid.toLowerCase()}">${esc(curName(f))}</a> · ${ts.partial?`${ts.rec} of ${ts.games} games played (season in progress)`:`${ts.games} games`} · ${ts.bat.length} batters, ${ts.pit.length} pitchers</p></div></div>
   <div class="pager"><span>${pv?`← <a href="#ts-${pv.t.toLowerCase()}-${pv.y}">${pv.y} ${esc(tname(pv.t))}</a>`:""}</span><span>${nx?`<a href="#ts-${nx.t.toLowerCase()}-${nx.y}">${nx.y} ${esc(tname(nx.t))}</a> →`:""}</span></div>
   <div class="summary"><div class="lab">Team</div>${[["R",T.b.R],["HR",T.b.HR],["BA",avg(T.b.BA)],["OPS",avg(T.b.OPS)],["ERA",f2(T.p.ERA)],["SO",T.p.K],["WHIP",f2(T.p.WHIP)]].map(([k,v])=>`<div class="s"><b>${k}</b><span>${v}</span></div>`).join("")}</div>
   <section><h2>Batting</h2>${table(bc,bRows,{foot:[{p:null,y,s:T.b}]})}</section>
@@ -534,10 +539,10 @@ function seasonPage(y){
   const pt=[tc,c("W",r=>r.T.p.W,{v:r=>r.T.p.W}),c("L",r=>r.T.p.L,{v:r=>r.T.p.L}),c("ERA",r=>f2(r.T.p.ERA),{v:r=>r.T.p.ERA}),c("SV",r=>r.T.p.SV,{v:r=>r.T.p.SV}),c("IP",r=>ipf(r.T.p.OUTS),{v:r=>r.T.p.OUTS}),c("H",r=>r.T.p.H,{v:r=>r.T.p.H}),c("ER",r=>r.T.p.ER,{v:r=>r.T.p.ER}),c("BB",r=>r.T.p.BB,{v:r=>r.T.p.BB}),c("SO",r=>r.T.p.K,{v:r=>r.T.p.K}),c("WHIP",r=>f2(r.T.p.WHIP),{v:r=>r.T.p.WHIP}),c("SO9",r=>f1(r.T.p.SO9),{v:r=>r.T.p.SO9})];
   const lg={b:sumBat(tss.flatMap(t=>t.bat)),p:sumPit(tss.flatMap(t=>t.pit))};
   const boards=[...BSTATS.slice(0,6).map(d=>boardHTML("b",d,y,5)),...PSTATS.slice(0,6).map(d=>boardHTML("p",d,y,5))].join("");
-  app.innerHTML=`<h1>${y} JWL Season</h1>
+  app.innerHTML=`<h1>${y} JWL Season${anyPartial?" "+tag:""}</h1>
   <div class="pager"><span>${i>0?`← <a href="#s-${YEARS[i-1]}">${YEARS[i-1]}</a>`:""}</span><span>${i<YEARS.length-1?`<a href="#s-${YEARS[i+1]}">${YEARS[i+1]}</a> →`:""}</span></div>
   <div class="summary"><div class="lab">League</div>${[["Teams",tss.length],["Games",SG[y]],["HR",lg.b.HR],["BA",avg(lg.b.BA)],["OPS",avg(lg.b.OPS)],["ERA",f2(lg.p.ERA)]].map(([k,v])=>`<div class="s"><b>${k}</b><span>${v}</span></div>`).join("")}</div>
-  <section><h2>Leaders</h2><div class="grid g4">${boards}</div><p class="note">Rate leaders need ${f1(3.1*SG[y])} PA or ${SG[y]} IP (3.1 PA and 1 IP per team game).${anyPartial?` For teams marked † the stat sheets cover only part of the season, so their players qualify on the games recorded.`:""}</p></section>
+  <section><h2>Leaders</h2><div class="grid g4">${boards}</div><p class="note">Rate leaders need ${f1(3.1*SG[y])} PA or ${SG[y]} IP (3.1 PA and 1 IP per team game).${anyPartial?` This season is still in progress, so players on teams that haven't finished qualify on games played so far.`:""}</p></section>
   <section><h2>Team batting</h2>${table(bt,rows,{foot:[{t:"",y,T:lg,g:""}].map(r=>({...r}))})}</section>
   <section><h2>Team pitching</h2>${table(pt,rows)}</section>`;
   // fix footer team cell label
@@ -549,7 +554,7 @@ function seasonsIndex(){
   const rows=YEARS.map(y=>{const hr=board("b",BSTATS[0],y,1)[0],ba=board("b",BSTATS[4],y,1)[0],w=board("p",PSTATS[0],y,1)[0],k=board("p",PSTATS[1],y,1)[0];const tss=Object.values(TS).filter(t=>t.y===y);return {y,n:tss.length,tss,hr,ba,w,k}});
   const lead=(a,d)=>a?`${plink(a.p)} (${(d.f||n0)(a.s[d.k])})`:"—";
   app.innerHTML=`<h1>Seasons</h1><section>${table([
-    c("Year",r=>`<a href="#s-${r.y}">${r.y}</a>`,{a:"l",v:r=>r.y}),c("Teams",r=>r.tss.sort((a,b)=>tname(a.t).localeCompare(tname(b.t))).map(t=>`<a href="#ts-${t.t.toLowerCase()}-${r.y}" title="${esc(tname(t.t))}">${timg(t.t)}</a>`).join(""),{a:"l",v:r=>r.n}),
+    c("Year",r=>`<a href="#s-${r.y}">${r.y}</a>${IN_PROG.has(r.y)?" "+tag:""}`,{a:"l",v:r=>r.y}),c("Teams",r=>r.tss.sort((a,b)=>tname(a.t).localeCompare(tname(b.t))).map(t=>`<a href="#ts-${t.t.toLowerCase()}-${r.y}" title="${esc(tname(t.t))}">${timg(t.t)}</a>`).join(""),{a:"l",v:r=>r.n}),
     c("HR leader",r=>lead(r.hr,BSTATS[0]),{a:"l",v:false}),c("BA leader",r=>lead(r.ba,BSTATS[4]),{a:"l",v:false}),c("Wins leader",r=>lead(r.w,PSTATS[0]),{a:"l",v:false}),c("SO leader",r=>lead(r.k,PSTATS[1]),{a:"l",v:false})],rows)}</section>
   <p class="note">The JWL played in ${YEARS[0]}, then ran continuously from ${YEARS[1]}.</p>`;
 }
