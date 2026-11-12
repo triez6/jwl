@@ -398,20 +398,32 @@ const PHOTOS={"ichiro-suzuki":"Ichiro.png"};
 function headshot(pid,code){
   if(PHOTOS[pid]) return `<img src="${PHOTOS[pid]}" alt="Photo of ${esc(pname?pname(pid):pid)}" style="width:100%;height:100%;object-fit:cover;display:block">`;
   const h=hash(pid), m=FR_META[frOf(code)]||{c1:"#555",c2:"#aaa"}, lg=logoUrl(code);
-  const w=34+(h%5), ear=(h>>4)%3, beard=(h>>7)%5===0, stub=(h>>9)%4===0, neck=16+((h>>11)%3)*2;
-  return `<svg viewBox="0 0 120 140" role="img" aria-label="Player silhouette in ${esc(tname(code))} cap">
+  const w=20+(h%4), jaw=.55+((h>>3)%3)*.05, beard=(h>>7)%5===0, cx=60, top=31;
+  const L=cx-w, R=cx+w;
+  return `<svg viewBox="0 0 120 140" role="img" aria-label="Player silhouette in ${esc(tname(code))} uniform">
   <rect width="120" height="140" fill="var(--sil-bg)"/>
-  <path d="M8 140 C12 112 34 103 60 103 C86 103 108 112 112 140Z" fill="${m.c1}"/>
-  <path d="M44 104 L60 122 L76 104" fill="none" stroke="${m.c2}" stroke-width="4" stroke-linejoin="round"/>
-  <rect x="${60-neck/2}" y="84" width="${neck}" height="24" rx="7" fill="var(--sil)"/>
-  ${ear?`<ellipse cx="${60-w-1}" cy="70" rx="${4+ear}" ry="7" fill="var(--sil)"/><ellipse cx="${60+w+1}" cy="70" rx="${4+ear}" ry="7" fill="var(--sil)"/>`:""}
-  <path d="M${60-w} 58 C${60-w} 104 ${60+w} 104 ${60+w} 58Z" fill="var(--sil)"/>
-  ${beard?`<path d="M${62-w} 76 C${66-w} 104 ${54+w} 104 ${58+w} 76 C${50+w} 90 ${70-w} 90 ${62-w} 76Z" fill="#000" opacity=".18"/>`:""}
-  ${stub?`<path d="M50 84 Q60 89 70 84" stroke="#000" stroke-opacity=".18" stroke-width="5" fill="none" stroke-linecap="round"/>`:""}
-  <path d="M${58-w} 60 C${56-w} 26 ${64+w} 26 ${62+w} 60Z" fill="${m.c1}"/>
-  <path d="M${56-w} 58 Q60 50 ${70+w} 59 Q${66+w} 66 ${54+w} 64 Q60 60 ${58-w} 64Z" fill="${m.c1}" stroke="#000" stroke-opacity=".25"/>
-  <circle cx="60" cy="31" r="3" fill="${m.c2}"/>
-  ${lg?`<image href="${lg}" x="46" y="34" width="28" height="22" preserveAspectRatio="xMidYMid meet"/>`:""}
+  <circle cx="60" cy="74" r="58" fill="${m.c1}" opacity=".07"/>
+  <path d="M4 140 C6 119 20 108 44 103 L76 103 C100 108 114 119 116 140Z" fill="${m.c1}"/>
+    <path d="M44 103 C34 106 24 111 17 118" stroke="#fff" stroke-opacity=".12" stroke-width="2" fill="none"/>
+  <path d="M76 103 C86 106 96 111 103 118" stroke="#000" stroke-opacity=".15" stroke-width="2" fill="none"/>
+  <path d="M51 88 L50 104 Q60 114 70 104 L69 88Z" fill="var(--sil)"/>
+  <path d="M51 88 L50 98 Q60 104 70 98 L69 88Z" fill="#000" opacity=".16"/>
+  <path d="M45 103 L60 121 L75 103" fill="none" stroke="${m.c2}" stroke-width="3.5" stroke-linejoin="round"/>
+  <line x1="60" y1="122" x2="60" y2="140" stroke="#000" stroke-opacity=".22" stroke-width="1.2"/>
+  <circle cx="60" cy="129" r="1.3" fill="${m.c2}"/><circle cx="60" cy="137" r="1.3" fill="${m.c2}"/>
+  <ellipse cx="${L-.5}" cy="72" rx="3.6" ry="6.2" fill="var(--sil)"/><ellipse cx="${R+.5}" cy="72" rx="3.6" ry="6.2" fill="var(--sil)"/>
+  <path d="M${L} 54 C${L} 80 ${cx-w*jaw} 93 ${cx} 94 C${cx+w*jaw} 93 ${R} 80 ${R} 54Z" fill="var(--sil)"/>
+  <path d="M${cx} 54 L${R} 54 C${R} 80 ${cx+w*jaw} 93 ${cx} 94Z" fill="#000" opacity=".06"/>
+  ${beard?`<path d="M${L+2} 74 C${L+4} 88 ${cx-8} 94 ${cx} 94 C${cx+8} 94 ${R-4} 88 ${R-2} 74 C${R-6} 84 ${cx+6} 86 ${cx} 86 C${cx-6} 86 ${L+6} 84 ${L+2} 74Z" fill="#000" opacity=".14"/>`:""}
+  <path d="M${L} 62 Q${cx} 72 ${R} 62 L${R} 67 Q${cx} 77 ${L} 67Z" fill="#000" opacity=".16"/>
+  <path d="M${L-3} 59 C${L-3} 37 ${L+6} 26 ${cx} 26 C${R-6} 26 ${R+3} 37 ${R+3} 59Z" fill="${m.c1}"/>
+  <path d="M${cx} 26 C${R-6} 26 ${R+3} 37 ${R+3} 59 L${cx} 59Z" fill="#000" opacity=".1"/>
+  <path d="M${cx} 27 Q${cx-7} 40 ${cx-11} 59 M${cx} 27 Q${cx+7} 40 ${cx+11} 59" stroke="#000" stroke-opacity=".13" stroke-width="1" fill="none"/>
+  <path d="M${L-7} 58 Q${cx} 51 ${R+7} 58 Q${R+4} 67 ${cx} 68 Q${L-4} 67 ${L-7} 58Z" fill="${m.c1}"/>
+  <path d="M${L-7} 58 Q${cx} 51 ${R+7} 58 Q${R+4} 67 ${cx} 68 Q${L-4} 67 ${L-7} 58Z" fill="#000" opacity=".25"/>
+  <path d="M${L-6} 58 Q${cx} 52 ${R+6} 58" stroke="#fff" stroke-opacity=".2" stroke-width="1.2" fill="none"/>
+  <circle cx="${cx}" cy="26.5" r="2.3" fill="${m.c2}"/>
+  ${lg?`<image href="${lg}" x="${cx-11}" y="34" width="22" height="16" preserveAspectRatio="xMidYMid meet"/>`:""}
   </svg>`;
 }
 
