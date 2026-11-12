@@ -541,7 +541,10 @@ function franchisePage(fid){
   <div class="band"><div class="art"><img src="${lg.mascot?.file||""}" alt=""></div>
    <div class="txt"><span class="eyebrow">JWL franchise · ${f.names.flatMap(n=>n.years).length} seasons</span><h1>${esc(name)}</h1>
    <p>${hist}</p>${lg.wordmark?`<div style="background:rgba(255,255,255,.92);border-radius:4px;padding:6px 10px;max-width:280px"><img src="${lg.wordmark.sm}" alt="${esc(name)} wordmark" style="max-height:44px;display:block;margin:auto"></div>`:""}</div></div>
-  ${(()=>{const t=psTotals(fid);return Object.keys(PS.years).length?`<div class="summary"><div class="lab">Postseason</div>${[["Playoff apps",t.po.length],["Cup apps",t.cup.length],["Cup titles",t.won.length]].map(([k,v])=>`<div class="s"><b>${k}</b><span>${v}</span></div>`).join("")}${t.won.length?`<div class="s"><b>Titles</b><span style="font-size:15px">${t.won.join(", ")}</span></div>`:""}</div>`:""})()}
+  ${(()=>{const t=psTotals(fid),W=yby.reduce((s,r)=>s+r.T.p.W,0),L=yby.reduce((s,r)=>s+r.T.p.L,0);
+    const cells=[["All-time record",`${W}-${L}`],["W-L%",pct(W+L?W/(W+L):null)],["Seasons",yby.length]];
+    if(Object.keys(PS.years).length)cells.push(["Playoff apps",t.po.length],["Cup apps",t.cup.length],["Cup titles",t.won.length]);
+    return `<div class="summary">${cells.map(([k,v])=>`<div class="s"><b>${k}</b><span>${v}</span></div>`).join("")}${t.won.length?`<div class="s"><b>Title years</b><span style="font-size:15px">${t.won.join(", ")}</span></div>`:""}</div>`})()}
   <section><h2>Year-by-year</h2>${table(ybyCols,yby)}<p class="note">Every JWL season is 42 games.${yby.some(r=>r.partial)?" Seasons still in progress show games played so far.":""}</p></section>
   <section><h2>Franchise leaders</h2><div class="grid g4">${boards}</div></section>
   <section><h2>Logos &amp; marks</h2><div class="logos">${logoFigs}</div></section>
