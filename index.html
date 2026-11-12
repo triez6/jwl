@@ -290,11 +290,11 @@ const gCell=r=>r.partial?`<span title="Season in progress: ${r.rec} of ${SEASON_
 
 /* ---------- load & index ---------- */
 async function load(){
-  const get=f=>fetch(f).then(r=>{if(!r.ok)throw new Error(f);return r.json()});
+  const get=f=>fetch(f,{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error(f);return r.json()});
   const [players,bat,pit,fr,logos]=await Promise.all(["data/players.json","data/batting.json","data/pitching.json","data/franchises.json","logos/manifest.json"].map(get));
   PLIST=players; for(const p of players){PL[p.id]={...p,bat:[],pit:[]}}
   BAT=bat; PIT=pit; FR=fr; LOGO=logos; TEAMS=fr.teams;
-  AW=await fetch("data/awards.json").then(r=>r.ok?r.json():{years:{}}).catch(()=>({years:{}}));
+  AW=await fetch("data/awards.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{years:{}}).catch(()=>({years:{}}));
   const addAw=(p,a)=>{if(p&&PL[p])(AWP.get(p)||AWP.set(p,[]).get(p)).push(a)};
   for(const [ys,d] of Object.entries(AW.years)){const y=+ys;
     addAw(d.mvp,{y,k:"mvp",txt:"MVP"}); addAw(d.poy,{y,k:"poy",txt:"Pitcher of the Year"});
