@@ -179,6 +179,21 @@ footer{border-top:1px solid var(--rule);color:var(--muted);font-size:12px}
 footer .wrap{padding-block:18px}
 .loading{padding:60px 0;text-align:center;color:var(--muted)}
 .tag{display:inline-block;vertical-align:middle;font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--gold-bg);color:var(--gold);border:1px solid currentColor;line-height:1.4}
+/* awards */
+.aw-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:12px}
+.aw-hon{display:flex;gap:12px;align-items:center;border:1px solid var(--rule);border-left:5px solid var(--gold);background:var(--card);border-radius:var(--r);padding:10px 12px}
+.aw-hon .headshot{width:56px;height:66px}
+.aw-hon .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.aw-hon b{display:block;font-size:16px}
+.aw-hon .line{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+table.aj td.l{min-width:180px}
+table.aj td.pos{font-weight:800;color:var(--muted);text-align:center;width:44px}
+table.aj tbody tr.grp td{border-top:2px solid var(--rule)}
+.aj .star{color:var(--gold);font-weight:800;margin-left:4px}
+.yearnav{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.yearnav a{padding:4px 10px;border:1px solid var(--rule);border-radius:var(--r);background:var(--card);font-weight:700;font-size:13px;color:var(--ink)}
+.yearnav a:hover{border-color:var(--ink);text-decoration:none}
+.chip.gold{border-color:var(--gold);background:var(--gold-bg);color:var(--ink)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
@@ -194,6 +209,7 @@ footer .wrap{padding-block:18px}
     <a href="#teams" data-n="teams">Teams</a>
     <a href="#seasons" data-n="seasons">Seasons</a>
     <a href="#leaders" data-n="leaders">Leaders</a>
+    <a href="#awards" data-n="awards">Awards</a>
   </nav>
   <div class="search">
     <input id="q" type="search" placeholder="Search players or teams" autocomplete="off" aria-label="Search players or teams">
@@ -215,7 +231,7 @@ const CODE_LOGO={GG:["MH","old3"],RN:["SW","old3"],MMG:["WF","old3"]};
 const ROLE_LABEL={monogram:"Primary mark",mascot:"Mascot",wordmark:"Wordmark",historical:"Historical mascot",alt1:"Alternate mark",alt2:"Alternate mark",old1:"Former mascot",old2:"Former wordmark",old3:"Former mark",old4:"Former mark"};
 
 /* ---------- state ---------- */
-let PL={}, PLIST=[], BAT=[], PIT=[], FR=null, LOGO={}, TEAMS={}, YEARS=[], SG={}, TS={}, BPY=new Map(), PPY=new Map(), LED={};
+let PL={}, PLIST=[], BAT=[], PIT=[], FR=null, LOGO={}, TEAMS={}, YEARS=[], SG={}, TS={}, BPY=new Map(), PPY=new Map(), LED={}, AW={years:{}}, AWP=new Map();
 const app=document.getElementById("app");
 const TABLES={}; let tid=0;
 
@@ -278,6 +294,11 @@ async function load(){
   const [players,bat,pit,fr,logos]=await Promise.all(["data/players.json","data/batting.json","data/pitching.json","data/franchises.json","logos/manifest.json"].map(get));
   PLIST=players; for(const p of players){PL[p.id]={...p,bat:[],pit:[]}}
   BAT=bat; PIT=pit; FR=fr; LOGO=logos; TEAMS=fr.teams;
+  AW=await fetch("data/awards.json").then(r=>r.ok?r.json():{years:{}}).catch(()=>({years:{}}));
+  const addAw=(p,a)=>{if(p&&PL[p])(AWP.get(p)||AWP.set(p,[]).get(p)).push(a)};
+  for(const [ys,d] of Object.entries(AW.years)){const y=+ys;
+    addAw(d.mvp,{y,k:"mvp",txt:"MVP"}); addAw(d.poy,{y,k:"poy",txt:"Pitcher of the Year"});
+    for(const s of d.allJackson)addAw(s.p,{y,k:"aj"+s.tier,txt:`All-Jackson ${s.tier===1?"1st":"2nd"} Team (${s.pos})`,t:s.t})}
   const ys=new Set(), outs={};
   for(const r of BAT){PL[r.p].bat.push(r);ys.add(r.y);(TS[r.t+"-"+r.y]??={t:r.t,y:r.y,bat:[],pit:[]}).bat.push(r)}
   for(const r of PIT){PL[r.p].pit.push(r);ys.add(r.y);(TS[r.t+"-"+r.y]??={t:r.t,y:r.y,bat:[],pit:[]}).pit.push(r);outs[r.t+"-"+r.y]=(outs[r.t+"-"+r.y]||0)+r.OUTS}
@@ -402,6 +423,9 @@ function home(){
     <section style="margin:0"><h2>JWL single-season records</h2><dl class="rec">${rec("b",BSTATS[0])}${rec("b",BSTATS[1])}${rec("b",BSTATS[2])}${rec("b",BSTATS[4])}${rec("b",BSTATS[8])}${rec("p",PSTATS[0])}${rec("p",PSTATS[1])}${rec("p",PSTATS[2])}${rec("p",PSTATS[3])}</dl></section>
     <section style="margin:0"><h2>Career leaders</h2><div class="grid" style="gap:12px">${boardHTML("b",BSTATS[0],"career",5)}${boardHTML("p",PSTATS[1],"career",5)}</div></section>
   </div>
+  ${(()=>{const ay=Object.keys(AW.years).map(Number).sort((a,b)=>b-a)[0];if(!ay)return "";const d=AW.years[ay];
+    const hon=(k,p,pit)=>p&&PL[p]?`<div class="aw-hon"><div class="headshot">${headshot(p,d.allJackson.find(s=>s.p===p)?.t||lastTeam(PL[p]))}</div><div><span class="k">${ay} ${k}</span><b>${plink(p)}</b><div class="line">${awLine(p,ay,pit)}</div></div></div>`:"";
+    return `<section><h2>${ay} award winners</h2><div class="aw-top">${hon("MVP",d.mvp,false)}${hon("Pitcher of the Year",d.poy,true)}</div><p class="note"><a href="#awards-${ay}">${ay} All-Jackson teams →</a> · <a href="#awards">All awards →</a></p></section>`})()}
   <section><h2>${last} leaders${IN_PROG.has(last)?" "+tag:""}</h2><div class="grid g4">${boardHTML("b",BSTATS[0],last,5)}${boardHTML("b",BSTATS[4],last,5)}${boardHTML("p",PSTATS[0],last,5)}${boardHTML("p",PSTATS[2],last,5)}</div>
   <p class="note"><a href="#leaders">All leaderboards →</a></p></section>`;
 }
@@ -451,6 +475,7 @@ function playerPage(id){
   ${sum}
   ${role==="Pitcher"?pTbl+bTbl:bTbl+pTbl}
   <p class="note"><b class="led">Bold</b> = led the JWL that season. ${p.bat.length?"BB includes intentional walks. Rate stats use the league sheet's formulas.":""}</p>
+  ${playerAwards(id)}
   ${finHTML}
   <div class="pager"><span>${prev?`← ${plink(prev.id)}`:""}</span><span>${next?`${plink(next.id)} →`:""}</span></div>`;
 }
@@ -542,6 +567,7 @@ function seasonPage(y){
   app.innerHTML=`<h1>${y} JWL Season${anyPartial?" "+tag:""}</h1>
   <div class="pager"><span>${i>0?`← <a href="#s-${YEARS[i-1]}">${YEARS[i-1]}</a>`:""}</span><span>${i<YEARS.length-1?`<a href="#s-${YEARS[i+1]}">${YEARS[i+1]}</a> →`:""}</span></div>
   <div class="summary"><div class="lab">League</div>${[["Teams",tss.length],["Games",SG[y]],["HR",lg.b.HR],["BA",avg(lg.b.BA)],["OPS",avg(lg.b.OPS)],["ERA",f2(lg.p.ERA)]].map(([k,v])=>`<div class="s"><b>${k}</b><span>${v}</span></div>`).join("")}</div>
+  ${AW.years[y]?`<section>${awardsYearHTML(y,{head:false}).replace('<div class="aw-top">','<h2>Awards</h2><div class="aw-top">')}</section>`:""}
   <section><h2>Leaders</h2><div class="grid g4">${boards}</div><p class="note">Rate leaders need ${f1(3.1*SG[y])} PA or ${SG[y]} IP (3.1 PA and 1 IP per team game).${anyPartial?` This season is still in progress, so players on teams that haven't finished qualify on games played so far.`:""}</p></section>
   <section><h2>Team batting</h2>${table(bt,rows,{foot:[{t:"",y,T:lg,g:""}].map(r=>({...r}))})}</section>
   <section><h2>Team pitching</h2>${table(pt,rows)}</section>`;
@@ -572,6 +598,51 @@ function leadersPage(){
   sel.onchange=()=>{LS.scope=sel.value==="career"||sel.value==="all"?sel.value:+sel.value;leadersPage()};
   document.getElementById("lb-b").onclick=()=>{LS.kind="b";leadersPage()}; document.getElementById("lb-p").onclick=()=>{LS.kind="p";leadersPage()};
 }
+/* ---------- awards ---------- */
+function awLine(p,y,pitcher){
+  const b=BPY.get(p+"|"+y), q=PPY.get(p+"|"+y);
+  if(pitcher&&q){const s=q.s;return `${s.W}-${s.L}, ${f2(s.ERA)} ERA${s.SV?`, ${s.SV} SV`:""}, ${s.K} SO, ${ipf(s.OUTS)} IP`}
+  if(b){const s=b.s;return `${avg(s.BA)}/${avg(s.OBP)}/${avg(s.SLG)}, ${s.HR} HR, ${s.RBI} RBI`}
+  return "";
+}
+function awSlot(s,y,d){if(!s)return `<td class="l muted">—</td><td></td>`;
+  const star=s.p===d.mvp?`<span class="star" title="MVP">MVP</span>`:s.p===d.poy?`<span class="star" title="Pitcher of the Year">POY</span>`:"";
+  return `<td class="l">${s.t?timg(s.t):""}${plink(s.p)}${star}</td><td class="l muted small">${awLine(s.p,y,s.pos==="SP"||s.pos==="RP")}</td>`}
+function awardsYearHTML(y,{head=true}={}){
+  const d=AW.years[y]; if(!d)return "";
+  const hon=(k,p)=>{if(!p||!PL[p])return "";const t=d.allJackson.find(s=>s.p===p)?.t||lastTeam(PL[p]);
+    return `<div class="aw-hon"><div class="headshot">${headshot(p,t)}</div><div><span class="k">${y} ${k}</span><b>${plink(p)}</b><div class="line">${t?timg(t)+esc(tname(t))+" · ":""}${awLine(p,y,k!=="MVP")}</div></div></div>`};
+  const pos=AW.positions.filter(ps=>d.allJackson.some(s=>s.pos===ps));
+  let rows="";
+  for(const ps of pos){const f=d.allJackson.filter(s=>s.pos===ps&&s.tier===1), sc=d.allJackson.filter(s=>s.pos===ps&&s.tier===2), n=Math.max(f.length,sc.length);
+    for(let i=0;i<n;i++)rows+=`<tr class="${i===0?"grp":""}"><td class="pos">${i===0?ps:""}</td>${awSlot(f[i],y,d)}${awSlot(sc[i],y,d)}</tr>`}
+  return `${head?`<h2><a href="#s-${y}" style="color:inherit">${y}</a> JWL Awards</h2>`:""}
+  <div class="aw-top">${hon("MVP",d.mvp)}${hon("Pitcher of the Year",d.poy)}</div>
+  <div class="tw"><table class="st aj"><thead><tr><th>Pos</th><th class="l">1st Team All-Jackson</th><th class="l">${y} line</th><th class="l">2nd Team All-Jackson</th><th class="l">${y} line</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+function awardsPage(y){
+  document.title="Awards · JWL";
+  const ys=Object.keys(AW.years).map(Number).sort((a,b)=>b-a);
+  if(!ys.length){app.innerHTML=`<h1>Awards</h1><p class="muted">No awards on file yet.</p>`;return}
+  const show=y&&AW.years[y]?[y]:ys;
+  const mvps=ys.map(x=>({y:x,d:AW.years[x]}));
+  app.innerHTML=`<h1>JWL Awards</h1>
+  <p class="muted" style="margin:6px 0 0">Each season the league names an MVP, a Pitcher of the Year, and 1st and 2nd Team All-Jackson at every position. All-Jackson picks lean on offense, with defense judged from each player's real MLB season, since the JWL doesn't keep fielding stats.</p>
+  <div class="yearnav"><a href="#awards">All years</a>${ys.map(x=>`<a href="#awards-${x}">${x}</a>`).join("")}</div>
+  ${y?"":`<section><h2>MVP &amp; Pitcher of the Year by season</h2>${table([
+    c("Year",r=>`<a href="#awards-${r.y}">${r.y}</a>`,{a:"l",v:r=>r.y}),
+    c("MVP",r=>{const t=r.d.allJackson.find(s=>s.p===r.d.mvp)?.t;return `${t?timg(t):""}${plink(r.d.mvp)}`},{a:"l",v:r=>PL[r.d.mvp]?.last||""}),
+    c("MVP line",r=>awLine(r.d.mvp,r.y,false),{a:"l",v:false}),
+    c("Pitcher of the Year",r=>{const t=r.d.allJackson.find(s=>s.p===r.d.poy)?.t;return `${t?timg(t):""}${plink(r.d.poy)}`},{a:"l",v:r=>PL[r.d.poy]?.last||""}),
+    c("POY line",r=>awLine(r.d.poy,r.y,true),{a:"l",v:false})],mvps)}</section>`}
+  ${show.map(x=>`<section>${awardsYearHTML(x)}</section>`).join("")}`;
+}
+function playerAwards(id){
+  const a=(AWP.get(id)||[]).slice().sort((x,y)=>x.y-y.y||(x.k<y.k?1:-1)); if(!a.length)return "";
+  const n1=a.filter(x=>x.k==="aj1").length,n2=a.filter(x=>x.k==="aj2").length,nm_=a.filter(x=>x.k==="mvp").length,np=a.filter(x=>x.k==="poy").length;
+  const sumTxt=[nm_&&`${nm_}× MVP`,np&&`${np}× Pitcher of the Year`,n1&&`${n1}× All-Jackson 1st Team`,n2&&`${n2}× 2nd Team`].filter(Boolean).join(" · ");
+  return `<section><h2>Awards &amp; honors</h2><p class="muted small" style="margin:0 0 8px">${sumTxt}</p><div class="chips">${a.map(x=>`<a class="chip ${x.k==="mvp"||x.k==="poy"?"gold":""}" style="padding-left:${x.t?4:9}px" href="#awards-${x.y}">${x.t?timg(x.t):""}${x.y} · ${esc(x.txt)}</a>`).join("")}</div></section>`;
+}
 function notFound(){app.innerHTML=`<h1>Page not found</h1><p>That page isn't in the JWL record books. <a href="#home">Go to the home page</a> or search above.</p>`}
 
 /* ---------- router ---------- */
@@ -588,8 +659,10 @@ function route(){
   else if(h==="seasons")seasonsIndex();
   else if(m=h.match(/^s-(\d{4})$/))seasonPage(+m[1]);
   else if(h==="leaders")leadersPage();
+  else if(h==="awards")awardsPage(null);
+  else if(m=h.match(/^awards-(\d{4})$/))awardsPage(+m[1]);
   else notFound();
-  const sec=!h||h==="home"?"home":h.startsWith("p")?"players":h.startsWith("t")?"teams":h.startsWith("s")?"seasons":h;
+  const sec=!h||h==="home"?"home":h.startsWith("awards")?"awards":h.startsWith("p")?"players":h.startsWith("t")?"teams":h.startsWith("s")?"seasons":h;
   document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.dataset.n===sec));
   window.scrollTo(0,0);
 }
