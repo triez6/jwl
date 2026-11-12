@@ -1,0 +1,11 @@
+{
+ "note": "4-team playoff each season: two semifinals, winners meet in the Jackson Cup. Team codes are the names used that season.",
+ "years": {
+  "1999": {"champion": "AGI", "cup": ["AGI", "HST"], "playoffs": ["AGI", "HST", "ED", "SW"]},
+  "2003": {"champion": "FB", "cup": ["FB", "MMG"], "playoffs": ["FB", "MMG", "AGI", "RN"]},
+  "2004": {"champion": "BH", "cup": ["BH", "WF"], "playoffs": ["BH", "WF", "FB", "ED"]},
+  "2005": {"champion": "FB", "cup": ["FB", "AGI"], "playoffs": ["FB", "AGI", "HST", "SB"]},
+  "2006": {"champion": "SW", "cup": ["SW", "AGI"], "playoffs": ["SW", "AGI", "BH", "FB"]},
+  "2007": {"champion": "FB", "cup": ["FB", "HST"], "playoffs": ["FB", "HST", "MH", "BH"]}
+ }
+}
