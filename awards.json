@@ -1,0 +1,1155 @@
+{
+ "positions": [
+  "SP",
+  "RP",
+  "C",
+  "1B",
+  "2B",
+  "3B",
+  "SS",
+  "OF",
+  "DH"
+ ],
+ "years": {
+  "1999": {
+   "mvp": "sammy-sosa",
+   "poy": "al-leiter",
+   "allJackson": [
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "al-leiter",
+     "t": "HST"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "roger-clemens",
+     "t": "HST"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "curt-schilling",
+     "t": "SW"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "pedro-martinez",
+     "t": "SW"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "kevin-brown",
+     "t": "BH"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "tom-glavine",
+     "t": "AGI"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "greg-maddux",
+     "t": "SB"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "mike-mussina",
+     "t": "ED"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "trevor-hoffman",
+     "t": "HST"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "paul-quantrill",
+     "t": "AGI"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "john-wetteland",
+     "t": "SW"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "scott-service",
+     "t": "BH"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "bill-simas",
+     "t": "BH"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "tim-crabtree",
+     "t": "ED"
+    },
+    {
+     "pos": "C",
+     "tier": 1,
+     "p": "ivan-rodriguez",
+     "t": "BH"
+    },
+    {
+     "pos": "C",
+     "tier": 2,
+     "p": "mike-piazza",
+     "t": "MH"
+    },
+    {
+     "pos": "1B",
+     "tier": 1,
+     "p": "mark-mcgwire",
+     "t": "MH"
+    },
+    {
+     "pos": "1B",
+     "tier": 2,
+     "p": "jeff-bagwell",
+     "t": "SB"
+    },
+    {
+     "pos": "2B",
+     "tier": 1,
+     "p": "craig-biggio",
+     "t": "AGI"
+    },
+    {
+     "pos": "2B",
+     "tier": 2,
+     "p": "robby-alomar",
+     "t": "BH"
+    },
+    {
+     "pos": "3B",
+     "tier": 1,
+     "p": "chipper-jones",
+     "t": "ED"
+    },
+    {
+     "pos": "3B",
+     "tier": 2,
+     "p": "vinny-castilla",
+     "t": "HST"
+    },
+    {
+     "pos": "SS",
+     "tier": 1,
+     "p": "alex-rodriguez",
+     "t": "ED"
+    },
+    {
+     "pos": "SS",
+     "tier": 2,
+     "p": "barry-larkin",
+     "t": "SW"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "sammy-sosa",
+     "t": "HST"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "bernie-williams",
+     "t": "ED"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "barry-bonds",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "juan-gonzalez",
+     "t": "FB"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "larry-walker",
+     "t": "MH"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "manny-ramirez",
+     "t": "AGI"
+    },
+    {
+     "pos": "DH",
+     "tier": 1,
+     "p": "greg-vaughn",
+     "t": "ED"
+    },
+    {
+     "pos": "DH",
+     "tier": 2,
+     "p": "gary-sheffield",
+     "t": "SW"
+    }
+   ]
+  },
+  "2003": {
+   "mvp": "albert-pujols",
+   "poy": "tomo-ohka",
+   "allJackson": [
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "barry-zito",
+     "t": "RN"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "derek-lowe",
+     "t": "RN"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "tomo-ohka",
+     "t": "FB"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "kerry-wood",
+     "t": "BH"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "roy-halladay",
+     "t": "AGI"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "tim-hudson",
+     "t": "FB"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "randy-johnson",
+     "t": "MMG"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "tim-wakefield",
+     "t": "FB"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "juan-acevedo",
+     "t": "ED"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "robb-nen",
+     "t": "ED"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "jorge-julio",
+     "t": "AGI"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "eric-gagne",
+     "t": "BH"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "mariano-rivera",
+     "t": "MMG"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "mike-remlinger",
+     "t": "RN"
+    },
+    {
+     "pos": "C",
+     "tier": 1,
+     "p": "ivan-rodriguez",
+     "t": "MMG"
+    },
+    {
+     "pos": "C",
+     "tier": 2,
+     "p": "mike-piazza",
+     "t": "BH"
+    },
+    {
+     "pos": "1B",
+     "tier": 1,
+     "p": "todd-helton",
+     "t": "FB"
+    },
+    {
+     "pos": "1B",
+     "tier": 2,
+     "p": "jeff-bagwell",
+     "t": "MMG"
+    },
+    {
+     "pos": "2B",
+     "tier": 1,
+     "p": "jeff-kent",
+     "t": "FB"
+    },
+    {
+     "pos": "2B",
+     "tier": 2,
+     "p": "jose-vidro",
+     "t": "MMG"
+    },
+    {
+     "pos": "3B",
+     "tier": 1,
+     "p": "albert-pujols",
+     "t": "FB"
+    },
+    {
+     "pos": "3B",
+     "tier": 2,
+     "p": "scott-rolen",
+     "t": "MMG"
+    },
+    {
+     "pos": "SS",
+     "tier": 1,
+     "p": "miguel-tejada",
+     "t": "FB"
+    },
+    {
+     "pos": "SS",
+     "tier": 2,
+     "p": "edgar-renteria",
+     "t": "MMG"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "brian-giles",
+     "t": "ED"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "ichiro-suzuki",
+     "t": "SB"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "manny-ramirez",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "magglio-ordonez",
+     "t": "FB"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "barry-bonds",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "steve-finley",
+     "t": "MMG"
+    }
+   ]
+  },
+  "2004": {
+   "mvp": "jose-guillen",
+   "poy": "josh-beckett",
+   "allJackson": [
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "jason-schmidt",
+     "t": "BH"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "javier-vazquez",
+     "t": "ED"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "josh-beckett",
+     "t": "FB"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "brandon-webb",
+     "t": "ED"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "roy-halladay",
+     "t": "AGI"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "mark-prior",
+     "t": "AGI"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "pedro-martinez",
+     "t": "WF"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "miguel-batista",
+     "t": "HST"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "guillermo-mota",
+     "t": "ED"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "terry-adams",
+     "t": "SB"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "keith-foulke",
+     "t": "WF"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "matt-mantei",
+     "t": "FB"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "joe-borowski",
+     "t": "AGI"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "rod-beck",
+     "t": "BH"
+    },
+    {
+     "pos": "C",
+     "tier": 1,
+     "p": "jason-kendall",
+     "t": "AGI"
+    },
+    {
+     "pos": "C",
+     "tier": 2,
+     "p": "ivan-rodriguez",
+     "t": "WF"
+    },
+    {
+     "pos": "1B",
+     "tier": 1,
+     "p": "todd-helton",
+     "t": "FB"
+    },
+    {
+     "pos": "1B",
+     "tier": 2,
+     "p": "jason-giambi",
+     "t": "SB"
+    },
+    {
+     "pos": "2B",
+     "tier": 1,
+     "p": "jose-vidro",
+     "t": "WF"
+    },
+    {
+     "pos": "2B",
+     "tier": 2,
+     "p": "marcus-giles",
+     "t": "AGI"
+    },
+    {
+     "pos": "3B",
+     "tier": 1,
+     "p": "scott-rolen",
+     "t": "WF"
+    },
+    {
+     "pos": "3B",
+     "tier": 2,
+     "p": "bill-mueller",
+     "t": "BH"
+    },
+    {
+     "pos": "SS",
+     "tier": 1,
+     "p": "alex-rodriguez",
+     "t": "ED"
+    },
+    {
+     "pos": "SS",
+     "tier": 2,
+     "p": "orlando-cabrera",
+     "t": "BH"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "richard-hidalgo",
+     "t": "BH"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "luis-e-gonzalez",
+     "t": "ED"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "jose-guillen",
+     "t": "WF"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "barry-bonds",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "albert-pujols",
+     "t": "FB"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "vladimir-guerrero",
+     "t": "HST"
+    }
+   ]
+  },
+  "2005": {
+   "mvp": "barry-bonds",
+   "poy": "johan-santana",
+   "allJackson": [
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "brad-radke",
+     "t": "ED"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "chris-carpenter",
+     "t": "SB"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "johan-santana",
+     "t": "FB"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "tim-hudson",
+     "t": "FB"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "roger-clemens",
+     "t": "HST"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "tom-glavine",
+     "t": "AGI"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "jaret-wright",
+     "t": "HST"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "jake-westbrook",
+     "t": "AGI"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "francisco-cordero",
+     "t": "SB"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "trevor-hoffman",
+     "t": "ED"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "mariano-rivera",
+     "t": "WF"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "jamie-walker",
+     "t": "AGI"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "armando-benitez",
+     "t": "WF"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "keith-foulke",
+     "t": "WF"
+    },
+    {
+     "pos": "C",
+     "tier": 1,
+     "p": "javy-lopez",
+     "t": "SB"
+    },
+    {
+     "pos": "C",
+     "tier": 2,
+     "p": "johnny-estrada",
+     "t": "SW"
+    },
+    {
+     "pos": "1B",
+     "tier": 1,
+     "p": "todd-helton",
+     "t": "AGI"
+    },
+    {
+     "pos": "1B",
+     "tier": 2,
+     "p": "jim-thome",
+     "t": "BH"
+    },
+    {
+     "pos": "2B",
+     "tier": 1,
+     "p": "jose-vidro",
+     "t": "WF"
+    },
+    {
+     "pos": "2B",
+     "tier": 2,
+     "p": "juan-uribe",
+     "t": "ED"
+    },
+    {
+     "pos": "3B",
+     "tier": 1,
+     "p": "aramis-ramirez",
+     "t": "AGI"
+    },
+    {
+     "pos": "3B",
+     "tier": 2,
+     "p": "melvin-mora",
+     "t": "FB"
+    },
+    {
+     "pos": "SS",
+     "tier": 1,
+     "p": "miguel-tejada",
+     "t": "FB"
+    },
+    {
+     "pos": "SS",
+     "tier": 2,
+     "p": "nomar-garciaparra",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "lance-berkman",
+     "t": "SB"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "ichiro-suzuki",
+     "t": "SB"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "jim-edmonds",
+     "t": "FB"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "j-d-drew",
+     "t": "ED"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "barry-bonds",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "carlos-beltran",
+     "t": "SW"
+    }
+   ]
+  },
+  "2006": {
+   "mvp": "derrek-lee",
+   "poy": "jake-peavy",
+   "allJackson": [
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "johan-santana",
+     "t": "FB"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "jon-garland",
+     "t": "BH"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "jake-peavy",
+     "t": "FB"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "roy-oswalt",
+     "t": "WF"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "roy-halladay",
+     "t": "AGI"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "rich-harden",
+     "t": "WF"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "roger-clemens",
+     "t": "SW"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "ben-sheets",
+     "t": "SW"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "mariano-rivera",
+     "t": "WF"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "akinori-otsuka",
+     "t": "HST"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "dustin-hermanson",
+     "t": "BH"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "chad-cordero",
+     "t": "AGI"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "jason-isringhausen",
+     "t": "FB"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "eddie-guardado",
+     "t": "SB"
+    },
+    {
+     "pos": "C",
+     "tier": 1,
+     "p": "victor-martinez",
+     "t": "FB"
+    },
+    {
+     "pos": "C",
+     "tier": 2,
+     "p": "jason-varitek",
+     "t": "ED"
+    },
+    {
+     "pos": "1B",
+     "tier": 1,
+     "p": "derrek-lee",
+     "t": "SW"
+    },
+    {
+     "pos": "1B",
+     "tier": 2,
+     "p": "tony-clark",
+     "t": "BH"
+    },
+    {
+     "pos": "2B",
+     "tier": 1,
+     "p": "mark-ellis",
+     "t": "AGI"
+    },
+    {
+     "pos": "2B",
+     "tier": 2,
+     "p": "chase-utley",
+     "t": "SB"
+    },
+    {
+     "pos": "3B",
+     "tier": 1,
+     "p": "alex-rodriguez",
+     "t": "ED"
+    },
+    {
+     "pos": "3B",
+     "tier": 2,
+     "p": "morgan-ensberg",
+     "t": "HST"
+    },
+    {
+     "pos": "SS",
+     "tier": 1,
+     "p": "derek-jeter",
+     "t": "SW"
+    },
+    {
+     "pos": "SS",
+     "tier": 2,
+     "p": "carlos-guillen",
+     "t": "ED"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "johnny-damon",
+     "t": "HST"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "randy-winn",
+     "t": "BH"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "andruw-jones",
+     "t": "BH"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "ken-griffey-jr",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "miguel-cabrera",
+     "t": "HST"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "jason-bay",
+     "t": "AGI"
+    }
+   ]
+  },
+  "2007": {
+   "mvp": "travis-hafner",
+   "poy": "jake-peavy",
+   "allJackson": [
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "jake-peavy",
+     "t": "FB"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "john-smoltz",
+     "t": "SW"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "chris-carpenter",
+     "t": "SB"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "chris-young",
+     "t": "SW"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "roy-oswalt",
+     "t": "HST"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "roy-halladay",
+     "t": "AGI"
+    },
+    {
+     "pos": "SP",
+     "tier": 1,
+     "p": "roger-clemens",
+     "t": "SW"
+    },
+    {
+     "pos": "SP",
+     "tier": 2,
+     "p": "felix-hernandez",
+     "t": "HST"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "francisco-rodriguez",
+     "t": "FB"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "jonathan-papelbon",
+     "t": "MH"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "jonathan-broxton",
+     "t": "FB"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "mariano-rivera",
+     "t": "MH"
+    },
+    {
+     "pos": "RP",
+     "tier": 1,
+     "p": "b-j-ryan",
+     "t": "SB"
+    },
+    {
+     "pos": "RP",
+     "tier": 2,
+     "p": "j-j-putz",
+     "t": "SW"
+    },
+    {
+     "pos": "C",
+     "tier": 1,
+     "p": "joe-mauer",
+     "t": "SW"
+    },
+    {
+     "pos": "C",
+     "tier": 2,
+     "p": "brian-mccann",
+     "t": "AGI"
+    },
+    {
+     "pos": "1B",
+     "tier": 1,
+     "p": "ryan-howard",
+     "t": "MH"
+    },
+    {
+     "pos": "1B",
+     "tier": 2,
+     "p": "lance-berkman",
+     "t": "MH"
+    },
+    {
+     "pos": "2B",
+     "tier": 1,
+     "p": "robinson-cano",
+     "t": "ED"
+    },
+    {
+     "pos": "2B",
+     "tier": 2,
+     "p": "chase-utley",
+     "t": "SB"
+    },
+    {
+     "pos": "3B",
+     "tier": 1,
+     "p": "miguel-cabrera",
+     "t": "HST"
+    },
+    {
+     "pos": "3B",
+     "tier": 2,
+     "p": "scott-rolen",
+     "t": "FB"
+    },
+    {
+     "pos": "SS",
+     "tier": 1,
+     "p": "jimmy-rollins",
+     "t": "AGI"
+    },
+    {
+     "pos": "SS",
+     "tier": 2,
+     "p": "carlos-guillen",
+     "t": "ED"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "manny-ramirez",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "carlos-beltran",
+     "t": "ED"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "jermaine-dye",
+     "t": "MH"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "barry-bonds",
+     "t": "AGI"
+    },
+    {
+     "pos": "OF",
+     "tier": 1,
+     "p": "grady-sizemore",
+     "t": "SW"
+    },
+    {
+     "pos": "OF",
+     "tier": 2,
+     "p": "bobby-abreu",
+     "t": "HST"
+    },
+    {
+     "pos": "DH",
+     "tier": 1,
+     "p": "travis-hafner",
+     "t": "FB"
+    },
+    {
+     "pos": "DH",
+     "tier": 2,
+     "p": "jim-thome",
+     "t": "SW"
+    }
+   ]
+  }
+ }
+}
