@@ -398,32 +398,21 @@ const PHOTOS={"ichiro-suzuki":"Ichiro.png"};
 function headshot(pid,code){
   if(PHOTOS[pid]) return `<img src="${PHOTOS[pid]}" alt="Photo of ${esc(pname?pname(pid):pid)}" style="width:100%;height:100%;object-fit:cover;display:block">`;
   const h=hash(pid), m=FR_META[frOf(code)]||{c1:"#555",c2:"#aaa"}, lg=logoUrl(code);
-  const w=20+(h%4), jaw=.55+((h>>3)%3)*.05, beard=(h>>7)%5===0, cx=60, top=31;
-  const L=cx-w, R=cx+w;
-  return `<svg viewBox="0 0 120 140" role="img" aria-label="Player silhouette in ${esc(tname(code))} uniform">
-  <rect width="120" height="140" fill="var(--sil-bg)"/>
-  <circle cx="60" cy="74" r="58" fill="${m.c1}" opacity=".07"/>
-  <path d="M4 140 C6 119 20 108 44 103 L76 103 C100 108 114 119 116 140Z" fill="${m.c1}"/>
-    <path d="M44 103 C34 106 24 111 17 118" stroke="#fff" stroke-opacity=".12" stroke-width="2" fill="none"/>
-  <path d="M76 103 C86 106 96 111 103 118" stroke="#000" stroke-opacity=".15" stroke-width="2" fill="none"/>
-  <path d="M51 88 L50 104 Q60 114 70 104 L69 88Z" fill="var(--sil)"/>
-  <path d="M51 88 L50 98 Q60 104 70 98 L69 88Z" fill="#000" opacity=".16"/>
-  <path d="M45 103 L60 121 L75 103" fill="none" stroke="${m.c2}" stroke-width="3.5" stroke-linejoin="round"/>
-  <line x1="60" y1="122" x2="60" y2="140" stroke="#000" stroke-opacity=".22" stroke-width="1.2"/>
-  <circle cx="60" cy="129" r="1.3" fill="${m.c2}"/><circle cx="60" cy="137" r="1.3" fill="${m.c2}"/>
-  <ellipse cx="${L-.5}" cy="72" rx="3.6" ry="6.2" fill="var(--sil)"/><ellipse cx="${R+.5}" cy="72" rx="3.6" ry="6.2" fill="var(--sil)"/>
-  <path d="M${L} 54 C${L} 80 ${cx-w*jaw} 93 ${cx} 94 C${cx+w*jaw} 93 ${R} 80 ${R} 54Z" fill="var(--sil)"/>
-  <path d="M${cx} 54 L${R} 54 C${R} 80 ${cx+w*jaw} 93 ${cx} 94Z" fill="#000" opacity=".06"/>
-  ${beard?`<path d="M${L+2} 74 C${L+4} 88 ${cx-8} 94 ${cx} 94 C${cx+8} 94 ${R-4} 88 ${R-2} 74 C${R-6} 84 ${cx+6} 86 ${cx} 86 C${cx-6} 86 ${L+6} 84 ${L+2} 74Z" fill="#000" opacity=".14"/>`:""}
-  <path d="M${L} 62 Q${cx} 72 ${R} 62 L${R} 67 Q${cx} 77 ${L} 67Z" fill="#000" opacity=".16"/>
-  <path d="M${L-3} 59 C${L-3} 37 ${L+6} 26 ${cx} 26 C${R-6} 26 ${R+3} 37 ${R+3} 59Z" fill="${m.c1}"/>
-  <path d="M${cx} 26 C${R-6} 26 ${R+3} 37 ${R+3} 59 L${cx} 59Z" fill="#000" opacity=".1"/>
-  <path d="M${cx} 27 Q${cx-7} 40 ${cx-11} 59 M${cx} 27 Q${cx+7} 40 ${cx+11} 59" stroke="#000" stroke-opacity=".13" stroke-width="1" fill="none"/>
-  <path d="M${L-7} 58 Q${cx} 51 ${R+7} 58 Q${R+4} 67 ${cx} 68 Q${L-4} 67 ${L-7} 58Z" fill="${m.c1}"/>
-  <path d="M${L-7} 58 Q${cx} 51 ${R+7} 58 Q${R+4} 67 ${cx} 68 Q${L-4} 67 ${L-7} 58Z" fill="#000" opacity=".25"/>
-  <path d="M${L-6} 58 Q${cx} 52 ${R+6} 58" stroke="#fff" stroke-opacity=".2" stroke-width="1.2" fill="none"/>
-  <circle cx="${cx}" cy="26.5" r="2.3" fill="${m.c2}"/>
-  ${lg?`<image href="${lg}" x="${cx-11}" y="34" width="22" height="16" preserveAspectRatio="xMidYMid meet"/>`:""}
+  return `<svg viewBox="127 40 1000 1167" role="img" aria-label="Player silhouette in ${esc(tname(code))} uniform">
+  <rect x="0" y="0" width="1254" height="1254" fill="var(--sil-bg)"/>
+  <path d="M438 410 L470 470 L478 425Z M816 410 L784 470 L776 425Z" fill="#000" opacity=".45"/>
+  <ellipse cx="455" cy="515" rx="27" ry="58" fill="var(--sil)"/><ellipse cx="798" cy="515" rx="27" ry="58" fill="var(--sil)"/>
+  <path d="M476 380 L476 560 C484 645 548 716 627 716 C706 716 770 645 778 560 L778 380Z" fill="var(--sil)"/>
+  <path d="M506 645 L502 742 L627 890 L752 742 L748 645 C705 700 668 716 627 716 C586 716 549 700 506 645Z" fill="var(--sil)"/>
+  <path d="M506 645 L502 742 L627 890 L752 742 L748 645 C705 700 668 716 627 716 C586 716 549 700 506 645Z" fill="#000" opacity=".13"/>
+  <path d="M456 748 L627 935 L798 748 C880 785 960 815 1000 845 C1062 892 1086 985 1093 1065 L1100 1220 L154 1220 L161 1065 C168 985 192 892 254 845 C294 815 374 785 456 748Z" fill="${m.c1}"/>
+  <path d="M456 748 L627 935 L798 748 L766 737 L627 887 L488 737Z" fill="${m.c2}"/>
+  <path d="M437 412 C437 262 520 195 627 195 C734 195 817 262 817 412 C760 382 700 370 627 370 C554 370 494 382 437 412Z" fill="${m.c1}"/>
+  <path d="M424 428 C468 362 556 336 627 336 C698 336 786 362 830 428 C828 442 816 446 802 438 C752 404 690 390 627 390 C564 390 502 404 452 438 C438 446 426 442 424 428Z" fill="${m.c1}"/>
+  <path d="M424 428 C468 362 556 336 627 336 C698 336 786 362 830 428 C828 442 816 446 802 438 C752 404 690 390 627 390 C564 390 502 404 452 438 C438 446 426 442 424 428Z" fill="#fff" opacity=".08"/>
+  <path d="M432 432 C480 395 560 376 627 376 C694 376 774 395 822 432 C816 442 808 443 802 438 C752 404 690 390 627 390 C564 390 502 404 452 438 C446 443 438 442 432 432Z" fill="#000" opacity=".3"/>
+  <rect x="598" y="168" width="58" height="32" rx="16" fill="${m.c2}"/>
+  ${lg?`<image href="${lg}" x="562" y="222" width="130" height="100" preserveAspectRatio="xMidYMid meet"/>`:""}
   </svg>`;
 }
 
