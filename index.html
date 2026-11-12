@@ -523,7 +523,7 @@ function franchisePage(fid){
     const hrTop=[...new Map(t.bat.map(r=>[r.p,r])).values()].sort((a,b)=>b.HR-a.HR)[0], wTop=[...t.pit].sort((a,b)=>b.W-a.W||a.ER-b.ER)[0];
     return {y:t.y,t:t.t,T,games:t.games,partial:t.partial,rec:t.rec,hr:hrTop,w:wTop}});
   const ybyCols=[c("Year",r=>`<a href="#ts-${r.t.toLowerCase()}-${r.y}">${r.y}</a>`,{a:"l",v:r=>r.y}),c("Team",r=>`${timg(r.t)}${esc(tname(r.t))}`,{a:"l",v:r=>tname(r.t)}),
-    c("G",r=>gCell(r),{v:r=>r.partial?r.rec:SEASON_G,t:"Team games (42-game seasons; in-progress seasons show games played)"}),c("R",r=>r.T.b.R,{v:r=>r.T.b.R}),c("HR",r=>r.T.b.HR,{v:r=>r.T.b.HR}),c("BA",r=>avg(r.T.b.BA),{v:r=>r.T.b.BA}),
+    c("G",r=>gCell(r),{v:r=>r.partial?r.rec:SEASON_G,t:"Team games (42-game seasons; in-progress seasons show games played)"}),c("W",r=>r.T.p.W,{v:r=>r.T.p.W,t:"Wins"}),c("L",r=>r.T.p.L,{v:r=>r.T.p.L,t:"Losses"}),c("W-L%",r=>pct(r.T.p.WLP),{v:r=>r.T.p.WLP??-1,t:"Winning percentage"}),c("R",r=>r.T.b.R,{v:r=>r.T.b.R}),c("HR",r=>r.T.b.HR,{v:r=>r.T.b.HR}),c("BA",r=>avg(r.T.b.BA),{v:r=>r.T.b.BA}),
     c("OPS",r=>avg(r.T.b.OPS),{v:r=>r.T.b.OPS}),c("ERA",r=>f2(r.T.p.ERA),{v:r=>r.T.p.ERA}),c("SO",r=>r.T.p.K,{v:r=>r.T.p.K,t:"Pitching strikeouts"}),
     c("Postseason",r=>psTag(psResult(r.t,r.y)),{a:"l",v:r=>({champ:3,cup:2,semi:1})[psResult(r.t,r.y)]||0}),
     c("Top HR hitter",r=>r.hr?`${plink(r.hr.p)} (${r.hr.HR})`:"—",{a:"l",v:false}),c("Top winner",r=>r.w?`${plink(r.w.p)} (${r.w.W}-${r.w.L})`:"—",{a:"l",v:false})];
