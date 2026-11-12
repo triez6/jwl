@@ -193,6 +193,9 @@ table.aj tbody tr.grp td{border-top:2px solid var(--rule)}
 .yearnav{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
 .yearnav a{padding:4px 10px;border:1px solid var(--rule);border-radius:var(--r);background:var(--card);font-weight:700;font-size:13px;color:var(--ink)}
 .yearnav a:hover{border-color:var(--ink);text-decoration:none}
+.cups{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.cups .chip{padding-left:7px}
+.cups svg{width:16px;height:16px;color:var(--gold);flex:none}
 .chip.gold{border-color:var(--gold);background:var(--gold-bg);color:var(--ink)}
 /* postseason */
 .cup{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor;line-height:1.4;white-space:nowrap}
@@ -483,7 +486,8 @@ function playerPage(id){
    <div class="info"><h1>${esc(nm(p))}</h1>
     <p><b>Role:</b> ${role}</p>
     <p><b>JWL seasons:</b> ${yrsText(ys)} <span class="muted">(${new Set(ys).size})</span></p>
-    <div class="chips">${chips}</div></div></div>
+    <div class="chips">${chips}</div>
+    ${(()=>{const cy=cupYears(id);return cy.length?`<div class="cups" title="Jackson Cup championship rosters">${cy.map(r=>`<a class="chip gold" href="#ts-${r.t.toLowerCase()}-${r.y}">${TROPHY}${r.y} Jackson Cup · ${esc(tname(r.t))}</a>`).join("")}${cy.length>1?`<span class="small muted">${cy.length}× champion</span>`:""}</div>`:""})()}</div></div>
   ${sum}
   ${role==="Pitcher"?pTbl+bTbl:bTbl+pTbl}
   <p class="note"><b class="led">Bold</b> = led the JWL that season. ${p.bat.length?"BB includes intentional walks. Rate stats use the league sheet's formulas.":""}</p>
@@ -664,6 +668,8 @@ function playerAwards(id){
   return `<section><h2>Awards &amp; honors</h2><p class="muted small" style="margin:0 0 8px">${sumTxt}</p><div class="chips">${a.map(x=>`<a class="chip ${x.k==="mvp"||x.k==="poy"?"gold":""}" style="padding-left:${x.t?4:9}px" href="#awards-${x.y}">${x.t?timg(x.t):""}${x.y} · ${esc(x.txt)}</a>`).join("")}</div></section>`;
 }
 /* ---------- postseason ---------- */
+const TROPHY=`<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h10v2h3.5v3.5A4.5 4.5 0 0 1 16.3 12a5 5 0 0 1-3.3 2.9V18h3.5v2h-9v-2H11v-3.1A5 5 0 0 1 7.7 12 4.5 4.5 0 0 1 3.5 7.5V4H7V2zm0 4H5.5v1.5A2.5 2.5 0 0 0 7 9.8V6zm10 0v3.8a2.5 2.5 0 0 0 1.5-2.3V6H17z"/><rect x="6" y="21" width="12" height="2" rx="1" fill="currentColor"/></svg>`;
+function cupYears(id){const p=PL[id];if(!p)return [];return [...new Map([...p.bat,...p.pit].filter(r=>PS.years[r.y]?.champion===r.t).map(r=>[r.y,r])).values()].sort((a,b)=>a.y-b.y)}
 const PS_LABEL={champ:"Won Jackson Cup",cup:"Lost Jackson Cup",semi:"Lost semifinal"};
 function psResult(code,y){const d=PS.years[y];if(!d)return null;const f=frOf(code),inF=c=>frOf(c)===f;
   if(inF(d.champion))return "champ"; if(d.cup.some(inF))return "cup"; if(d.playoffs.some(inF))return "semi"; return "none"}
